@@ -1,16 +1,16 @@
-import {FormikConfig, FormikValues} from 'formik';
+import {FormikConfig} from 'formik';
 import {loginValidationSchema} from './login-validation-schema';
-import {Alert} from 'react-native';
 
-export const loginFormikConfig: FormikConfig<FormikValues> = {
+type initialValuesType = {
+  email: string;
+  password: string;
+};
+
+export const loginFormikConfig: FormikConfig<initialValuesType> = {
   initialValues: {
     email: '',
     password: '',
   },
   validationSchema: loginValidationSchema,
-  onSubmit: values => {
-    Alert.alert(
-      `Email: ${values.email} ${'\n\n'} Password: ${values.password}`,
-    );
-  },
+  onSubmit: _values => {},
 };

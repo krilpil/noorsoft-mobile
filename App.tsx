@@ -3,14 +3,18 @@ import {StatusBar} from 'react-native';
 import styled from 'styled-components/native';
 import {NavigationContainer} from '@react-navigation/native';
 import Navigation from './src/navigation/navigation';
+import {store} from './src/redux/store';
+import {Provider} from 'react-redux';
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Wrapper>
-        <StatusBar />
-        <Navigation />
-      </Wrapper>
+      <Provider store={store}>
+        <Wrapper>
+          <StatusBar />
+          <Navigation />
+        </Wrapper>
+      </Provider>
     </NavigationContainer>
   );
 };

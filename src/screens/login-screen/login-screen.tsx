@@ -9,17 +9,24 @@ import Description from '../../components/form/description/description';
 import Combined from '../../components/form/combined/combined';
 import TouchableText from '../../components/touchable-text/touchable-text';
 import FormButton from '../../components/form/button/button';
-import {useFormik} from 'formik';
 import {loginFormikConfig} from './login-formik-config';
 import {navigationType, ScreenList} from '../../navigation/stack-list';
+import {useFormik} from 'formik';
+import {useAppDispatch} from '../../hooks/redux';
+import {userLogin} from '../../redux/slices/auth-slice';
 
 interface LoginScreenProps {
   navigation: navigationType;
 }
 
 const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
-  const {handleSubmit, handleBlur, handleChange, values, errors} =
-    useFormik(loginFormikConfig);
+  const dispatch = useAppDispatch();
+  const {handleSubmit, handleBlur, handleChange, values, errors} = useFormik({
+    ...loginFormikConfig,
+    onSubmit: ({email, password}) => {
+      dispatch(userLogin({email, password}));
+    },
+  });
 
   return (
     <FormWrapper>
