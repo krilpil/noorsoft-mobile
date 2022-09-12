@@ -1,11 +1,16 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import ChatInfo from '../../components/chat/chat-info/chat-info';
+import {HomeView} from './style-components';
+import ChatDialog from '../../components/chat/chat-dialog/chat-dialog';
+import ChatInput from '../../components/chat/chat-input/chat-input';
 
 const HomeScreen = () => {
   return (
-    <View>
-      <Text>Home</Text>
-    </View>
+    <HomeView>
+      <ChatInfo />
+      <ChatDialog />
+      <ChatInput />
+    </HomeView>
   );
 };
 

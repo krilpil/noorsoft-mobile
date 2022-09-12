@@ -2,16 +2,16 @@ import React from 'react';
 import {
   Form,
   FormWrapper,
-  Input,
   Title,
 } from '../../components/form/styled-components';
 import Description from '../../components/form/description/description';
-import Combined from '../../components/form/combined/combined';
+import Combined from '../../components/combined/combined';
 import TouchableText from '../../components/touchable-text/touchable-text';
-import FormButton from '../../components/form/button/button';
+import AppButton from '../../components/button/button';
 import {useFormik} from 'formik';
 import {signupFormikConfig} from './signup-formik-config';
 import {navigationType, ScreenList} from '../../navigation/stack-list';
+import {Input} from '../../components/input/style-components';
 
 interface SignupScreenProps {
   navigation: navigationType;
@@ -68,7 +68,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({navigation}) => {
             onPress={() => navigation.navigate(ScreenList.FORGOT)}
           />
         </Combined>
-        <FormButton onPress={() => handleSubmit()} title={'Sign up'} />
+        <AppButton onPress={() => handleSubmit()} title={'Sign up'} />
       </Form>
     </FormWrapper>
   );

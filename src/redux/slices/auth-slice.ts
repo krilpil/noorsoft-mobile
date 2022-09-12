@@ -1,8 +1,8 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {UserData} from '../../types/user-type';
+import {IUserAuthData} from '../../types/user-type';
 import {UserFormData} from '../../types/form-type';
 
-const initialState: UserData = {
+const initialState: IUserAuthData = {
   isAuth: false,
   email: '',
   token: '',
@@ -15,7 +15,7 @@ const authSlice = createSlice({
   reducers: {
     // USER LOGIN
     userLogin: (state, _action: PayloadAction<UserFormData>) => state,
-    userLoginSuccess: (state, action: PayloadAction<UserData>) =>
+    userLoginSuccess: (state, action: PayloadAction<IUserAuthData>) =>
       action.payload,
     userLoginFailure: (state, _action: PayloadAction<string>) => {
       state.isAuth = false;
@@ -23,9 +23,10 @@ const authSlice = createSlice({
       state.token = '';
       state.uid = '';
     },
+    userLogout: () => initialState,
   },
 });
 
-export const {userLogin, userLoginSuccess, userLoginFailure} =
+export const {userLogin, userLoginSuccess, userLoginFailure, userLogout} =
   authSlice.actions;
 export default authSlice.reducer;

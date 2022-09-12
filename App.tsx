@@ -5,15 +5,18 @@ import {NavigationContainer} from '@react-navigation/native';
 import Navigation from './src/navigation/navigation';
 import {store} from './src/redux/store';
 import {Provider} from 'react-redux';
+import {Provider as PaperProvider} from 'react-native-paper';
 
 const App = () => {
   return (
     <NavigationContainer>
       <Provider store={store}>
-        <Wrapper>
-          <StatusBar />
-          <Navigation />
-        </Wrapper>
+        <PaperProvider>
+          <Wrapper>
+            <StatusBar />
+            <Navigation />
+          </Wrapper>
+        </PaperProvider>
       </Provider>
     </NavigationContainer>
   );

@@ -20,18 +20,3 @@ export const Title = styled.Text.attrs({
   font-weight: bold;
   color: #fff;
 `;
-
-type InputProps = {
-  combined?: boolean;
-};
-
-export const Input = styled.TextInput<InputProps>`
-  margin-bottom: 15px;
-  margin-right: ${({combined}) => (combined ? '7px' : '0')};
-  margin-left: ${({combined}) => (combined ? '7px' : '0')};
-  padding: 15px;
-  border-radius: 16px;
-  width: auto;
-  flex: ${({combined}) => (combined ? 1 : 'none')};
-  background-color: #fff;
-`;

@@ -2,18 +2,18 @@ import React from 'react';
 import {
   Form,
   FormWrapper,
-  Input,
   Title,
 } from '../../components/form/styled-components';
 import Description from '../../components/form/description/description';
-import Combined from '../../components/form/combined/combined';
+import Combined from '../../components/combined/combined';
 import TouchableText from '../../components/touchable-text/touchable-text';
-import FormButton from '../../components/form/button/button';
+import AppButton from '../../components/button/button';
 import {loginFormikConfig} from './login-formik-config';
 import {navigationType, ScreenList} from '../../navigation/stack-list';
 import {useFormik} from 'formik';
 import {useAppDispatch} from '../../hooks/redux';
 import {userLogin} from '../../redux/slices/auth-slice';
+import {Input} from '../../components/input/style-components';
 
 interface LoginScreenProps {
   navigation: navigationType;
@@ -59,7 +59,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
             onPress={() => navigation.navigate(ScreenList.FORGOT)}
           />
         </Combined>
-        <FormButton onPress={() => handleSubmit()} title={'Log in'} />
+        <AppButton onPress={() => handleSubmit()} title={'Log in'} />
       </Form>
     </FormWrapper>
   );
