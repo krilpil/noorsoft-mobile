@@ -1,4 +1,4 @@
-import {IUserData} from './user-type';
+import {IQuestionData, IUserData} from './user-type';
 
 export interface IUserMessage {
   writtenBy: 'client' | 'operator';
@@ -9,9 +9,7 @@ export interface IUserMessage {
   };
 }
 
-export interface IUserDialog extends IUserData {
-  status: StatusDialogType;
-}
+export type UserDialogType = IUserData & IQuestionData;
 
 export type StatusDialogType = 'active' | 'saved' | 'closed' | 'pending';
 

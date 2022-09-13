@@ -13,7 +13,7 @@ const App = () => {
       <Provider store={store}>
         <PaperProvider>
           <Wrapper>
-            <StatusBar />
+            <StatusBar barStyle={'light-content'} />
             <Navigation />
           </Wrapper>
         </PaperProvider>

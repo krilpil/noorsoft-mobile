@@ -9,6 +9,7 @@ const ChatDialog = () => {
   const dispatch = useAppDispatch();
   const uid = useAppSelector(state => state.auth.uid);
   const messages = useAppSelector(state => state.dialog.messages);
+  const unread = useAppSelector(state => state.dialog.unread);
 
   const scrollViewRef = useRef<ScrollView>(null);
 
@@ -23,9 +24,11 @@ const ChatDialog = () => {
         scrollViewRef.current?.scrollToEnd();
       }}>
       <ChatDialogView>
-        {messages.map(({content, writtenBy, timestamp}) => {
+        {messages.map(({content, writtenBy, timestamp}, index) => {
+          const isUnread = messages.length - index <= unread;
           return (
             <Message
+              unread={isUnread}
               key={timestamp.nanoseconds + timestamp.seconds}
               content={content}
               writtenBy={writtenBy}

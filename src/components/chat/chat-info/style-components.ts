@@ -6,6 +6,7 @@ export const InfoView = styled.View`
   flex-direction: row;
   align-items: center;
   padding: 13px 20px;
+  background-color: #027afe;
 `;
 
 export const Avatar = styled(AvatarPaper.Text).attrs({
@@ -16,9 +17,16 @@ export const Avatar = styled(AvatarPaper.Text).attrs({
 `;
 
 export const Name = styled.Text`
-  flex: 1;
   font-size: 17px;
-  text-align: center;
   color: #ffffff;
   font-weight: 600;
+`;
+
+export const Status = styled.Text`
+  color: #ffffff;
+`;
+
+export const InformationView = styled.View`
+  flex: 1;
+  align-items: center;
 `;

@@ -1,16 +1,16 @@
-import {IUserDialog, IUserMessage} from '../../types/message-type';
+import {IUserMessage, UserDialogType} from '../../types/message-type';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-interface IState extends IUserDialog {
+interface IState extends UserDialogType {
   messages: IUserMessage[];
 }
 
 const initialState: IState = {
-  userId: '',
   name: '',
   surname: '',
   avatar: '',
   status: 'pending',
+  unread: 0,
   messages: [],
 };
 
@@ -18,12 +18,13 @@ const dialogSlice = createSlice({
   name: 'dialog',
   initialState,
   reducers: {
-    setCurrentDialogUser: (state, action: PayloadAction<IUserDialog>) => {
-      state.userId = action.payload.userId;
-      state.name = action.payload.name;
-      state.surname = action.payload.surname;
-      state.avatar = action.payload.avatar;
-      state.status = action.payload.status;
+    fetchDialog: (state, _action: PayloadAction<string>) => state,
+    setDialog: (state, {payload}: PayloadAction<UserDialogType>) => {
+      state.name = payload.name;
+      state.surname = payload.surname;
+      state.avatar = payload.avatar;
+      state.status = payload.status;
+      state.unread = payload.unread;
     },
     fetchCurrentMessages: (state, _action: PayloadAction<string>) => state,
     setCurrentMessages: (state, action: PayloadAction<IUserMessage[]>) => {
@@ -32,6 +33,10 @@ const dialogSlice = createSlice({
   },
 });
 
-export const {fetchCurrentMessages, setCurrentMessages, setCurrentDialogUser} =
-  dialogSlice.actions;
+export const {
+  fetchCurrentMessages,
+  setCurrentMessages,
+  setDialog,
+  fetchDialog,
+} = dialogSlice.actions;
 export default dialogSlice.reducer;

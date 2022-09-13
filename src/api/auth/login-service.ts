@@ -1,12 +1,12 @@
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import {firebaseAuth} from '../../firebase/config';
 import {UserFormData} from '../../types/form-type';
-import {UserData} from '../../types/user-type';
+import {IUserAuthData} from '../../types/user-type';
 
 export const loginService = async ({
   email,
   password,
-}: UserFormData): Promise<UserData> => {
+}: UserFormData): Promise<IUserAuthData> => {
   return signInWithEmailAndPassword(firebaseAuth, email, password)
     .then(userCredential => {
       const {user} = userCredential;

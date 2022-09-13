@@ -1,3 +1,5 @@
+import {StatusDialogType} from './message-type';
+
 export interface IUserAuthData {
   isAuth: boolean;
   email: string;
@@ -6,8 +8,12 @@ export interface IUserAuthData {
 }
 
 export interface IUserData {
-  userId: string;
   name: string;
   surname: string;
   avatar: string;
+}
+
+export interface IQuestionData {
+  status: StatusDialogType;
+  unread: number;
 }
