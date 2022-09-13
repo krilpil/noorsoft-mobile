@@ -12,14 +12,21 @@ import {useFormik} from 'formik';
 import {signupFormikConfig} from './signup-formik-config';
 import {navigationType, ScreenList} from '../../navigation/stack-list';
 import {Input} from '../../components/input/style-components';
+import {useAppDispatch} from '../../hooks/redux';
+import {userSignup} from '../../redux/slices/auth-slice';
 
 interface SignupScreenProps {
   navigation: navigationType;
 }
 
 const SignupScreen: React.FC<SignupScreenProps> = ({navigation}) => {
-  const {handleSubmit, handleBlur, handleChange, values, errors} =
-    useFormik(signupFormikConfig);
+  const dispatch = useAppDispatch();
+  const {handleSubmit, handleBlur, handleChange, values, errors} = useFormik({
+    ...signupFormikConfig,
+    onSubmit: signupValue => {
+      dispatch(userSignup(signupValue));
+    },
+  });
 
   return (
     <FormWrapper>

@@ -1,8 +1,9 @@
-import {FormikConfig, FormikValues} from 'formik';
+import {FormikConfig} from 'formik';
 import {Alert} from 'react-native';
 import {signupValidationSchema} from './signup-validation-schema';
+import {UserSignupData} from '../../types/form-type';
 
-export const signupFormikConfig: FormikConfig<FormikValues> = {
+export const signupFormikConfig: FormikConfig<UserSignupData> = {
   initialValues: {
     name: '',
     surname: '',

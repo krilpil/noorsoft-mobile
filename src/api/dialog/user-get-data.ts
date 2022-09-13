@@ -30,7 +30,6 @@ export const fetchUserData = async (userId: string) => {
         emitter({
           name: userDataDoc.name,
           surname: userDataDoc.surname,
-          avatar: userDataDoc.avatar,
           status: questionData.data().status,
           unread: questionData.data().unread,
         });

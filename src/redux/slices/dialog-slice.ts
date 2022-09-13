@@ -8,7 +8,6 @@ interface IState extends UserDialogType {
 const initialState: IState = {
   name: '',
   surname: '',
-  avatar: '',
   status: 'pending',
   unread: 0,
   messages: [],
@@ -22,7 +21,6 @@ const dialogSlice = createSlice({
     setDialog: (state, {payload}: PayloadAction<UserDialogType>) => {
       state.name = payload.name;
       state.surname = payload.surname;
-      state.avatar = payload.avatar;
       state.status = payload.status;
       state.unread = payload.unread;
     },

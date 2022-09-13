@@ -10,7 +10,6 @@ export interface IUserAuthData {
 export interface IUserData {
   name: string;
   surname: string;
-  avatar: string;
 }
 
 export interface IQuestionData {
