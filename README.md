@@ -10,15 +10,15 @@ https://noorsoft-internship-back.web.app
 ## Brief information
 
 ### Stack
-TypeScript, React, Redux-toolkit, Redux-saga, Firebase, Ant Design, Formik, ESLint, Jest, Prettier...
+TypeScript, React, Redux-toolkit, Redux-saga, Styled-components, Firebase, Ant Design, Formik, ESLint, Jest, Prettier...
 
 ### What does the Noorsoft web application solve?
-Noorsoft web application is part of [Noorsoft-Mobile](https://github.com/krilpil/noorsoft-mobile "Mobile application for client").  
+[Noorsoft web applications](https://github.com/krilpil/noorsoft "Web application for operators") is part of Noorsoft-Mobile.   
 A web application is an interface for interacting with clients who have any difficulties.  
 
 ### What is Noorsoft-Mobile?
 
-[Noorsoft-Mobile](https://github.com/krilpil/noorsoft-mobile "Mobile application for client") is an integral part of the overall Noorosft system.  
+Noorsoft-Mobile is an integral part of the overall Noorosft system.  
 Only in this application customers can ask questions to the support service.  
 
 ## How does it work?
