@@ -35,6 +35,7 @@ export const UserSignupService = async ({
       return '';
     })
     .catch(error => {
-      throw new Error(error.message);
+      console.log(error);
+      throw new Error('The user is already registered');
     });
 };

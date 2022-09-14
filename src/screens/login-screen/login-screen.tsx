@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   Form,
   FormWrapper,
@@ -11,9 +11,10 @@ import AppButton from '../../components/button/button';
 import {loginFormikConfig} from './login-formik-config';
 import {navigationType, ScreenList} from '../../navigation/stack-list';
 import {useFormik} from 'formik';
-import {useAppDispatch} from '../../hooks/redux';
+import {useAppDispatch, useAppSelector} from '../../hooks/redux';
 import {userLogin} from '../../redux/slices/auth-slice';
 import {Input} from '../../components/input/style-components';
+import {setErrors} from '../../redux/slices/main-sclice';
 
 interface LoginScreenProps {
   navigation: navigationType;
@@ -21,6 +22,7 @@ interface LoginScreenProps {
 
 const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
   const dispatch = useAppDispatch();
+  const stateErrors = useAppSelector(state => state.main.error);
   const {handleSubmit, handleBlur, handleChange, values, errors} = useFormik({
     ...loginFormikConfig,
     onSubmit: ({email, password}) => {
@@ -28,13 +30,17 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
     },
   });
 
+  useEffect(() => {
+    dispatch(setErrors(''));
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <FormWrapper>
       <Form>
         <Title>Login</Title>
         <Description
           initialText={'Enter your email and password to log in'}
-          errors={errors}
+          errors={stateErrors ? stateErrors : errors}
         />
         <Input
           placeholder={'Your email...'}
@@ -53,10 +59,6 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
           <TouchableText
             text={'Signup'}
             onPress={() => navigation.navigate(ScreenList.SIGNUP)}
-          />
-          <TouchableText
-            text={'Forgot password?'}
-            onPress={() => navigation.navigate(ScreenList.FORGOT)}
           />
         </Combined>
         <AppButton onPress={() => handleSubmit()} title={'Log in'} />

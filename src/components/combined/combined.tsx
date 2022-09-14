@@ -2,7 +2,7 @@ import React from 'react';
 import {CombinedWrap} from './styled-components';
 
 type FormNavigationProps = {
-  children: JSX.Element[];
+  children: JSX.Element | JSX.Element[];
   offset?: boolean;
 };
 

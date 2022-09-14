@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   Form,
   FormWrapper,
@@ -12,8 +12,9 @@ import {useFormik} from 'formik';
 import {signupFormikConfig} from './signup-formik-config';
 import {navigationType, ScreenList} from '../../navigation/stack-list';
 import {Input} from '../../components/input/style-components';
-import {useAppDispatch} from '../../hooks/redux';
+import {useAppDispatch, useAppSelector} from '../../hooks/redux';
 import {userSignup} from '../../redux/slices/auth-slice';
+import {setErrors} from '../../redux/slices/main-sclice';
 
 interface SignupScreenProps {
   navigation: navigationType;
@@ -21,6 +22,7 @@ interface SignupScreenProps {
 
 const SignupScreen: React.FC<SignupScreenProps> = ({navigation}) => {
   const dispatch = useAppDispatch();
+  const stateErrors = useAppSelector(state => state.main.error);
   const {handleSubmit, handleBlur, handleChange, values, errors} = useFormik({
     ...signupFormikConfig,
     onSubmit: signupValue => {
@@ -28,13 +30,17 @@ const SignupScreen: React.FC<SignupScreenProps> = ({navigation}) => {
     },
   });
 
+  useEffect(() => {
+    dispatch(setErrors(''));
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <FormWrapper>
       <Form>
         <Title>Signup</Title>
         <Description
           initialText={'Enter your email and password to sign up'}
-          errors={errors}
+          errors={stateErrors ? stateErrors : errors}
         />
         <Combined offset>
           <Input
@@ -69,10 +75,6 @@ const SignupScreen: React.FC<SignupScreenProps> = ({navigation}) => {
           <TouchableText
             text={'Login'}
             onPress={() => navigation.navigate(ScreenList.LOGIN)}
-          />
-          <TouchableText
-            text={'Forgot password?'}
-            onPress={() => navigation.navigate(ScreenList.FORGOT)}
           />
         </Combined>
         <AppButton onPress={() => handleSubmit()} title={'Sign up'} />
